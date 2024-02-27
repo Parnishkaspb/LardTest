@@ -36,21 +36,22 @@
                 </h5>
             </div>
 
-            
-            @foreach ($comments['answer_comment'][$id_comment] as $an_comment)
-                <div class="ms-3 mt-2" id="{{ $an_comment['id_comment'] }}">
-                ({{ $an_comment['id_comment'] }}) -> ({{ $id_comment }}):
-                    <h7 class="card-title"> {{ $an_comment['text'] }}
-                        <button class="button_edit" onclick="changeIDedit({{ $an_comment['id_comment'] }})">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
-                        <button class="button_edit" onclick="answerComment({{ $an_comment['id_comment'] }})">
-                            <i class="fa fa-reply" aria-hidden="true"></i>
-                        </button>
-                    </h7>
-                </div>
-                @include('partials.comments', ['comments' => $comments['answer_comment'], 'id_comment' => $an_comment['id_comment']])
-            @endforeach
+            @if(is_array($comments['answer_comment'][$id_comment]) && count($comments['answer_comment'][$id_comment]) > 0)
+                @foreach ($comments['answer_comment'][$id_comment] as $an_comment)
+                    <div class="ms-3 mt-2" id="{{ $an_comment['id_comment'] }}">
+                    ({{ $an_comment['id_comment'] }}) -> ({{ $id_comment }}):
+                        <h7 class="card-title"> {{ $an_comment['text'] }}
+                            <button class="button_edit" onclick="changeIDedit({{ $an_comment['id_comment'] }})">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button class="button_edit" onclick="answerComment({{ $an_comment['id_comment'] }})">
+                                <i class="fa fa-reply" aria-hidden="true"></i>
+                            </button>
+                        </h7>
+                    </div>
+                    @include('partials.comments', ['comments' => $comments['answer_comment'], 'id_comment' => $an_comment['id_comment']])
+                @endforeach
+            @endif
         </div>
     </div>
 @endforeach
@@ -61,7 +62,7 @@
         let parts = nameAttr.split('/');
     
         $.post({
-            url: '/write_comment.php',
+            url: './write_comment.php',
             data: {
                 text: comment.val(),
                 id_comment: parseInt(parts[0], 10),
@@ -108,5 +109,3 @@
 </script>
 
 @endsection
-
-
