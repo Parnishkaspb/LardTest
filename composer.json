@@ -1,0 +1,15 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Project\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bogdan"
+        }
+    ],
+    "require": {
+        "jenssegers/blade": "^2.0"
+    }
+}
