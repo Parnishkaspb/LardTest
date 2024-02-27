@@ -1,17 +1,17 @@
 <?php
 
 namespace Project\DB;
-
+require_once './config.php';
 use PDO;
 use PDOException;
 use Exception;
 
 class DB {
     private $pdo;
-    private $host = 'localhost';
-    private $username = 'u1560680_def';
-    private $password = 'yPg36eyCi3Z6WIIl';
-    private $database = 'u1560680_test_work';
+    private $host = DB_SERVER;
+    private $username = DB_USERNAME;
+    private $password = DB_PASSWORD;
+    private $database = DB_NAME;
     private $charset = 'utf8';
 
     protected function __construct() {
