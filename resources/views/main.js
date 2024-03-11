@@ -4,7 +4,7 @@
         let parts = nameAttr.split('/');
     
         $.post({
-            url: './write_comment.php',
+            url: './index.php',
             data: {
                 text: comment.val(),
                 id_comment: parseInt(parts[0], 10),
